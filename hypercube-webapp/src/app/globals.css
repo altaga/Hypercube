@@ -12,33 +12,80 @@ body {
   background: linear-gradient(180deg, #7c59ee 0%, #2e1861 100%);
 }
 
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Portrait mode on a touch screen device */
 @media only screen and (orientation: portrait) {
+  /* General styles */
   .my-header {
     position: absolute;
+    background: rgba(124, 89, 238, 0.0);
     top: 0;
     width: 100%;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0px 20px;
     z-index: 1;
-    opacity: 1;
   }
   .header-logo {
     position: relative;
-    height: 14vw;
-    width: 14vw;
+    height: 70px;
+    width: 70px;
   }
   .header-name {
+    position: relative;
     --height: 282px;
     --width: 1320px;
-    height: calc(var(--height) * 0.20);
-    width: calc(var(--width) * 0.20);
-    position: relative;
+    height: calc(var(--height) * 0.2);
+    width: calc(var(--width) * 0.2);
   }
+
+  /* Pages styles */
+
+  /* ---Landing Page--- */
+
+  .landing-page {
+    background-image: url("/assets/landing-full.png");
+    background-size: cover;
+    background-position: right;
+    background-color: #7c59ee; /* overlay color with 50% opacity */
+    background-blend-mode: multiply;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .landing-container {
+    position: relative;
+    display: flex;
+    height: auto;
+    width: 100%;
+    margin: 0 4%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .separator {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    height: 5px;
+    width: 10%;
+    align-self: center;
+  }
+
   .my-page {
     position: absolute;
     margin-top: 100px;
@@ -49,20 +96,7 @@ body {
     justify-content: center;
     flex-direction: column;
   }
-  .landing-page {
-    background-image: url("/assets/landing.png");
-    background-size: cover;
-    background-color: #7c59ee; /* overlay color with 50% opacity */
-    background-blend-mode: multiply;
-    position: absolute;
-    top: 0px;
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-  }
+
   .circle {
     position: absolute;
     top: 50%;
@@ -134,7 +168,7 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content:flex-start;
+    justify-content: flex-start;
     z-index: 1;
     opacity: 1;
   }
@@ -146,8 +180,8 @@ body {
   .header-name {
     --height: 282px;
     --width: 1320px;
-    height: calc(var(--height) * 0.20);
-    width: calc(var(--width) * 0.20);
+    height: calc(var(--height) * 0.2);
+    width: calc(var(--width) * 0.2);
     position: relative;
   }
   .my-page {
@@ -176,7 +210,7 @@ body {
   }
   .circle {
     position: absolute;
-    top:25%;
+    top: 25%;
     left: 0%;
     width: 100%;
     height: 200vw;

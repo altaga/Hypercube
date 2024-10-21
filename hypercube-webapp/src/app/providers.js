@@ -40,7 +40,7 @@ export default function Providers({ children }) {
       </div>
       <ThemeProvider theme={theme}>
         <CookiesProvider defaultSetOptions={{ path: "/" }}>
-          {children}
+          <div className="container">{children}</div>
         </CookiesProvider>
       </ThemeProvider>
     </React.Fragment>

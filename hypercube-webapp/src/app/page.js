@@ -14,27 +14,19 @@ export default function LandingPage() {
   const [user, setUser] = useCookies(["user"]);
   const [inputValue, setInputValue] = useState("");
   return (
-    <div className="landing-page">
-      <div className="circle" />
-      <div className="my-page">
-        <div className="stage-text" style={{ marginTop: "30px" }}>
+    <>
+      <div className="landing-page">
+        {
+          // <div className="circle" />
+        }
+      </div>
+      <div className="landing-container">
+        <div className="stage-text">
           <div>{"Welcome to"}</div>
           <div>{"Hypercube"}</div>
         </div>
-        <div
-          style={{
-            marginTop: "30px",
-            marginBottom: "30px",
-            backgroundColor: "white",
-            height: "5px",
-            width: "10%",
-            alignSelf: "center",
-          }}
-        />
-        <div
-          className="stage-description"
-          style={{ fontSize: "1.5rem", padding: "0px 40px" }}
-        >
+        <div className="separator" />
+        <div className="stage-description">
           Hypercube provides security and ensures you have an exceptional
           experience, leveraging sensors, AI, and loyalty points to offer safety
           and exclusive benefits throughout your stay.
@@ -94,7 +86,7 @@ export default function LandingPage() {
                     setUser("user", inputValue, { path: "/" });
                   }
                 }}
-                variant="outlined"
+                variant="contained"
                 color="primary"
                 style={{
                   borderRadius: "10px",
@@ -111,6 +103,6 @@ export default function LandingPage() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
