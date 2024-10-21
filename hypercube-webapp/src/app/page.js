@@ -28,7 +28,7 @@ export default function LandingPage() {
           and exclusive benefits throughout your stay.
         </div>
         <div className="landing-content">
-          {user.user ? (
+          {user ? (
             <Button
               onClick={() => {
                 deleteCookie("user");
