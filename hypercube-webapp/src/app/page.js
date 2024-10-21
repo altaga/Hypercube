@@ -37,9 +37,10 @@ export default function LandingPage() {
               onClick={() => {
                 setUser("user", null, { path: "/" });
               }}
-              variant="outlined"
+              variant="contained"
               color="hypercube"
               className="landing-button"
+              style={{ marginTop: "20px" }}
             >
               Logout
             </Button>
@@ -47,6 +48,7 @@ export default function LandingPage() {
             <>
               <Input
                 value={inputValue}
+                type="email"
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Enter your email"
                 className="landing-input"
