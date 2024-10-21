@@ -57,6 +57,8 @@ export default function CubePage({ params }) {
   const [gaugeDataAirQuality, setGaugeDataAirQuality] = useState(25);
 
   useEffect(() => {
+    alert(user.user);
+    //alert(points.points);
     let interval = setInterval(() => {
       //checkData(params.id);
     }, 15000);
