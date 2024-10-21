@@ -1,9 +1,9 @@
 "use client";
+import { getCookie, setCookie } from "@/api/cookies";
 import { getSensorData } from "@/api/sensor";
 import { Button, ButtonGroup } from "@mui/material";
 import { Gauge, gaugeClasses } from "@mui/x-charts";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 
 function calculateDewPoint(temperature, humidity) {
   const a = 17.27;
@@ -40,8 +40,8 @@ function calculateAQI(eCO2, TVOC) {
 
 export default function CubePage({ params }) {
   // Check User
-  const [user, setUser] = useCookies(["user"]);
-  const [points, setPoints] = useCookies(["points"]);
+  const user = getCookie("user");
+  const points = getCookie("points");
   const [stage, setStage] = useState(0);
   // Temperature Gauge
   const [fillTemp, setFillTemp] = useState("#52b202");
@@ -57,7 +57,7 @@ export default function CubePage({ params }) {
   const [gaugeDataAirQuality, setGaugeDataAirQuality] = useState(25);
 
   useEffect(() => {
-    alert(user.user);
+    //alert(user);
     //alert(points.points);
     let interval = setInterval(() => {
       //checkData(params.id);
@@ -189,12 +189,12 @@ export default function CubePage({ params }) {
               throughout, this space is designed to provide a fun and
               vibrant atmosphere.
             </div>
-            {user.user ? (
+            {user ? (
               <>
                 <div className="sensor-points">You earn 150 Hyperpoints</div>
                 <Button
                   onClick={() => {
-                    setPoints("points", (points?.points ?? 0) + 150);
+                    setCookie("points", points + 150);
                     alert("You earned 150 Hyperpoints!");
                   }}
                   variant="contained"

@@ -1,5 +1,5 @@
 "use client";
-import { useCookies } from "react-cookie";
+import { deleteCookie, getCookie, setCookie } from "@/api/cookies";
 import { Button, Input } from "@mui/material";
 import { useState } from "react";
 
@@ -11,15 +11,11 @@ const isEmail = (text) => {
 };
 
 export default function LandingPage() {
-  const [user, setUser] = useCookies(["user"]);
+  const user = getCookie("user");
   const [inputValue, setInputValue] = useState("");
   return (
     <>
-      <div className="landing-page">
-        {
-          // <div className="circle" />
-        }
-      </div>
+      <div className="landing-page" />
       <div className="landing-container">
         <div className="landing-text">
           <div>{"Welcome to"}</div>
@@ -35,7 +31,7 @@ export default function LandingPage() {
           {user.user ? (
             <Button
               onClick={() => {
-                setUser("user", null, { path: "/" });
+                deleteCookie("user");
               }}
               variant="contained"
               color="hypercube"
@@ -48,7 +44,6 @@ export default function LandingPage() {
             <>
               <Input
                 value={inputValue}
-                type="email"
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Enter your email"
                 className="landing-input"
@@ -58,7 +53,7 @@ export default function LandingPage() {
                   if (!isEmail(inputValue)) {
                     alert("Please enter a valid email address");
                   } else {
-                    setUser("user", inputValue, { path: "/" });
+                    setCookie("user", inputValue);
                   }
                 }}
                 variant="contained"
