@@ -11,8 +11,9 @@ body {
   background: linear-gradient(180deg, #7c59ee 0%, #2e1861 100%);
 }
 
+
 /* Portrait mode on a touch screen device */
-@media only screen and (orientation: portrait) and (pointer: coarse) and (hover: none) {
+@media only screen and (orientation: portrait) {
   .my-header {
     position: absolute;
     top: 0;
@@ -125,7 +126,7 @@ body {
 }
 
 /* Styles for devices with a mouse */
-@media (pointer: fine) and (hover: hover) {
+@media only screen and (orientation: landscape) {
   .my-header {
     position: absolute;
     top: 0;
