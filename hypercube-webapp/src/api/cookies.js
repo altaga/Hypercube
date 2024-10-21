@@ -1,6 +1,6 @@
 "use client";
 
-export async function setCookie(name, value) {
+export function setCookie(name, value) {
   window.localStorage.setItem(name, JSON.stringify({ value }));
 }
 
