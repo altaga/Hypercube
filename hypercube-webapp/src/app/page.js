@@ -31,7 +31,7 @@ export default function LandingPage() {
             alignSelf: "center",
           }}
         ></div>
-        <div className="stage-description" style={{ fontSize: "20px" }}>
+        <div className="stage-description" style={{ fontSize: "20px", padding: "0px 40px" }}>
           Hypercube provides security and ensures you have an exceptional
           experience, leveraging sensors, AI, and loyalty points to offer safety
           and exclusive benefits throughout your stay.
