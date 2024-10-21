@@ -58,7 +58,7 @@ export default function CubePage({ params }) {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      //checkData(params.id);
+      checkData(params.id);
     }, 15000);
     return () => {
       clearInterval(interval);
