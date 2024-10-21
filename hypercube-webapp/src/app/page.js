@@ -17,34 +17,37 @@ export default function LandingPage() {
     <div className="landing-page">
       <div className="circle" />
       <div className="my-page">
-        <div
-          className="stage-text"
-          style={{ marginTop: "20px", marginBottom: "30px" }}
-        >
-          Welcome to Hypercube
+        <div className="stage-text" style={{ marginTop: "30px" }}>
+          <div>{"Welcome to"}</div>
+          <div>{"Hypercube"}</div>
         </div>
         <div
           style={{
+            marginTop: "30px",
+            marginBottom: "30px",
             backgroundColor: "white",
             height: "5px",
             width: "10%",
             alignSelf: "center",
           }}
-        ></div>
-        <div className="stage-description" style={{ fontSize: "20px", padding: "0px 40px" }}>
+        />
+        <div
+          className="stage-description"
+          style={{ fontSize: "1.5rem", padding: "0px 40px" }}
+        >
           Hypercube provides security and ensures you have an exceptional
           experience, leveraging sensors, AI, and loyalty points to offer safety
           and exclusive benefits throughout your stay.
         </div>
         <div
           style={{
-            position: "absolute",
+            position: "relative",
+            marginTop: "40px",
             display: "flex",
             flexDirection: "column",
             width: "100%",
             alignItems: "center",
             justifyContent: "center",
-            bottom: 20,
             gap: 20,
           }}
         >

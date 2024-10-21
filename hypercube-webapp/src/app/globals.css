@@ -7,7 +7,8 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: linear-gradient(180deg, #7c59ee 0%, #2e1861 100%);
 }
 
@@ -21,25 +22,26 @@ body {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 0px 20px;
     z-index: 1;
     opacity: 1;
   }
   .header-logo {
     position: relative;
-    height: 80px;
-    width: 80px;
+    height: 14vw;
+    width: 14vw;
   }
   .header-name {
     --height: 282px;
     --width: 1320px;
-    height: calc(var(--height) * 0.24);
-    width: calc(var(--width) * 0.24);
+    height: calc(var(--height) * 0.20);
+    width: calc(var(--width) * 0.20);
     position: relative;
   }
   .my-page {
     position: absolute;
-    top: 100px;
+    margin-top: 100px;
     width: 100%;
     height: calc(100vh - 100px);
     display: flex;
@@ -51,7 +53,7 @@ body {
     background-image: url("/assets/landing.png");
     background-size: cover;
     background-color: #7c59ee; /* overlay color with 50% opacity */
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
     position: absolute;
     top: 0px;
     width: 100vw;
@@ -63,11 +65,10 @@ body {
   }
   .circle {
     position: absolute;
-    bottom: -20%;
-    left: 0%;
-    width: 100%;
-    height: 200vw;
-    clip-path: circle(56% at center);
+    top: 50%;
+    width: 100vw;
+    height: calc(100vh - 50%);
+    clip-path: ellipse(50% 100% at 50% 100%);
     background: linear-gradient(180deg, #7c59ee 0%, #03cadf 100%);
     background-clip: padding-box;
     background-origin: padding-box;
@@ -80,6 +81,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
+    align-self: center;
   }
   .stage-title {
     font-size: 2rem;
@@ -96,8 +98,6 @@ body {
     color: white;
     text-align: justify;
     text-align-last: center;
-    margin: 30;
-    padding: 0;
     font-family: "Roboto", sans-serif;
   }
   .stage-points {
