@@ -136,7 +136,7 @@ export default function CubePage({ params }) {
   };
 
   return (
-    <div className="my-page">
+    <div className="sensor-page">
       <ButtonGroup
         color="white"
         size="large"
@@ -179,9 +179,9 @@ export default function CubePage({ params }) {
       >
         {stage === 0 && (
           <>
-            <div className="stage-text">You Found a Hypercube!</div>
-            <div className="stage-title">Zone: CONNECT</div>
-            <div className="stage-description">
+            <div className="sensor-text">You Found a Hypercube!</div>
+            <div className="sensor-title">Zone: CONNECT</div>
+            <div className="sensor-description">
               A venue space that can accommodate up to 80 guests in theater
               style seating! With modern furnishings and bold pops of color
               throughout, this space is designed to provide a fun and
@@ -189,7 +189,7 @@ export default function CubePage({ params }) {
             </div>
             {user.user ? (
               <>
-                <div className="stage-points">You earn 150 Hyperpoints</div>
+                <div className="sensor-points">You earn 150 Hyperpoints</div>
                 <Button
                   onClick={() => {
                     setPoints("points", (points?.points ?? 0) + 150);
