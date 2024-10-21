@@ -1,5 +1,6 @@
 "use client";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { light } from "@mui/material/styles/createPalette";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -10,7 +11,13 @@ const theme = createTheme({
     white: {
       main: "#FFFFFF",
     },
+    hypercube: {
+      main: "#03cadf",
+      light: "#0292a2",
+      dark: "#025f6b",
+    }
   },
+  
 });
 
 export default function Providers({ children }) {
