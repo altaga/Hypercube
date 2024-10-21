@@ -11,7 +11,7 @@ const isEmail = (text) => {
 };
 
 export default function LandingPage() {
-  const user = getCookie("user");
+  const [user, setUser] = useState(getCookie("user"));
   const [inputValue, setInputValue] = useState("");
   return (
     <>
@@ -53,6 +53,7 @@ export default function LandingPage() {
                   if (!isEmail(inputValue)) {
                     alert("Please enter a valid email address");
                   } else {
+                    setUser(inputValue); 
                     setCookie("user", inputValue);
                   }
                 }}

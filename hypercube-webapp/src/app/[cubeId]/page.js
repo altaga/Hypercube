@@ -40,8 +40,8 @@ function calculateAQI(eCO2, TVOC) {
 
 export default function CubePage({ params }) {
   // Check User
-  const user = getCookie("user");
-  const points = getCookie("points");
+  const [user, _] = useState(getCookie("user"));
+  const [points, setPoints] = useState(getCookie("points"));
   const [stage, setStage] = useState(0);
   // Temperature Gauge
   const [fillTemp, setFillTemp] = useState("#52b202");
@@ -57,8 +57,6 @@ export default function CubePage({ params }) {
   const [gaugeDataAirQuality, setGaugeDataAirQuality] = useState(25);
 
   useEffect(() => {
-    //alert(user);
-    //alert(points.points);
     let interval = setInterval(() => {
       //checkData(params.id);
     }, 15000);
@@ -195,6 +193,7 @@ export default function CubePage({ params }) {
                 <Button
                   onClick={() => {
                     setCookie("points", points + 150);
+                    setPoints(points + 150);
                     alert("You earned 150 Hyperpoints!");
                   }}
                   variant="contained"
