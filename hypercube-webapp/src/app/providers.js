@@ -15,9 +15,8 @@ const theme = createTheme({
       main: "#03cadf",
       light: "#0292a2",
       dark: "#025f6b",
-    }
+    },
   },
-  
 });
 
 export default function Providers({ children }) {
@@ -25,7 +24,7 @@ export default function Providers({ children }) {
     <React.Fragment>
       <div className="my-header">
         <div className="header-logo">
-          <Link href="">
+          <Link href="/">
             <Image
               src={"/assets/logo.png"}
               alt="Hypercube Logo"
@@ -36,13 +35,15 @@ export default function Providers({ children }) {
           </Link>
         </div>
         <div className="header-name">
-          <Image
-            src={"/assets/name.png"}
-            alt="Hypercube Logo"
-            priority
-            layout="fill" // Makes the image fill the wrapper while keeping aspect ratio
-            objectFit="cover" // Ensures the image covers the whole area
-          />
+          <Link href="/">
+            <Image
+              src={"/assets/name.png"}
+              alt="Hypercube Logo"
+              priority
+              layout="fill" // Makes the image fill the wrapper while keeping aspect ratio
+              objectFit="cover" // Ensures the image covers the whole area
+            />
+          </Link>
         </div>
       </div>
       <ThemeProvider theme={theme}>
