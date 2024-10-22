@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { CookiesProvider } from "react-cookie";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme({
   palette: {
@@ -22,32 +24,9 @@ const theme = createTheme({
 export default function Providers({ children }) {
   return (
     <React.Fragment>
-      <div className="my-header">
-        <div className="header-logo">
-          <Link href="/">
-            <Image
-              src={"/assets/logo.png"}
-              alt="Hypercube Logo"
-              priority
-              layout="fill"
-              objectFit="cover"
-            />
-          </Link>
-        </div>
-        <div className="header-name">
-          <Link href="/">
-            <Image
-              src={"/assets/name.png"}
-              alt="Hypercube Logo"
-              priority
-              layout="fill" // Makes the image fill the wrapper while keeping aspect ratio
-              objectFit="cover" // Ensures the image covers the whole area
-            />
-          </Link>
-        </div>
-      </div>
       <ThemeProvider theme={theme}>
         <CookiesProvider defaultSetOptions={{ path: "/" }}>
+          <ToastContainer />
           <div className="container">{children}</div>
         </CookiesProvider>
       </ThemeProvider>

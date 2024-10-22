@@ -1,20 +1,48 @@
 "use client";
-import { deleteCookie, getCookie, setCookie } from "@/api/cookies";
+import { getCookie, setCookie } from "@/api/cookies";
 import { Button, Input } from "@mui/material";
-import { useState } from "react";
-
-// Create a function to detect if the text is an email
-const isEmail = (text) => {
-  // Regular expression for email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(text);
-};
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function LandingPage() {
-  const [user, setUser] = useState(getCookie("user"));
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("v.a.i@hotmail.com");
+  const [inputValue2, setInputValue2] = useState("201");
+
+  useEffect(() => {
+    const user = getCookie("user");
+    console.log(user);
+    if (user) {
+      window.location.href = "/user/" + user;
+    }
+  }, []);
+
   return (
     <>
+      <div className="my-header">
+        <div className="header-logo">
+          <Link href="/">
+            <Image
+              src={"/assets/logo.png"}
+              alt="Hypercube Logo"
+              priority
+              layout="fill"
+              objectFit="cover"
+            />
+          </Link>
+        </div>
+        <div className="header-name">
+          <Link href="/">
+            <Image
+              src={"/assets/name.png"}
+              alt="Hypercube Logo"
+              priority
+              layout="fill" // Makes the image fill the wrapper while keeping aspect ratio
+              objectFit="cover" // Ensures the image covers the whole area
+            />
+          </Link>
+        </div>
+      </div>
       <div className="landing-page" />
       <div className="landing-container">
         <div className="landing-text">
@@ -28,43 +56,35 @@ export default function LandingPage() {
           and exclusive benefits throughout your stay.
         </div>
         <div className="landing-content">
-          {user ? (
-            <Button
-              onClick={() => {
-                deleteCookie("user");
-              }}
-              variant="contained"
-              color="hypercube"
-              className="landing-button"
-              style={{ marginTop: "20px" }}
-            >
-              Logout
-            </Button>
-          ) : (
-            <>
-              <Input
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Enter your email"
-                className="landing-input"
-              />
-              <Button
-                onClick={() => {
-                  if (!isEmail(inputValue)) {
-                    alert("Please enter a valid email address");
-                  } else {
-                    setUser(inputValue); 
-                    setCookie("user", inputValue);
-                  }
-                }}
-                variant="contained"
-                color="hypercube"
-                className="landing-button"
-              >
-                Login with Email
-              </Button>
-            </>
-          )}
+          <Input
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Enter your email"
+            className="landing-input"
+          />
+          <Input
+            value={inputValue2}
+            onChange={(e) => setInputValue2(e.target.value)}
+            placeholder="Enter your room number"
+            className="landing-input"
+            style={{ marginBottom: "20px" }}
+          />
+          <Button
+            onClick={() => {
+              setCookie("room", inputValue2);
+              setCookie("user", inputValue);
+              setCookie("cubes", []);
+              setCookie("points", 0);
+              setTimeout(() => {
+                window.location.href = "/user/" + inputValue;
+              }, 300);
+            }}
+            variant="contained"
+            color="hypercube"
+            className="landing-button"
+          >
+            Login with Email
+          </Button>
         </div>
       </div>
     </>
