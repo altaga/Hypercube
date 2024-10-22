@@ -18,7 +18,7 @@ export default function UserPage({ params }) {
   const [cubes, ___] = useState(getCookie("cubes"));
   const [points, ____] = useState(getCookie("points"));
   const [offers, setOffers] = useState([]);
-  const [stage, setStage] = useState(2);
+  const [stage, setStage] = useState(0);
 
   const getOffers = async () => {
     const offers = await getOffer(getCookie("points"));
