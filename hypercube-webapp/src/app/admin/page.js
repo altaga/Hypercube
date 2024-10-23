@@ -41,7 +41,7 @@ export default function UserPage({ params }) {
       {stage === 0 && (
         <>
           {cubes.map((cube, index) => (
-            <div className="user-card">
+            <div key={cube.id + index} className="user-card">
               <div className="user-text">
                 Zone:
                 <br />
@@ -58,8 +58,8 @@ export default function UserPage({ params }) {
               <div className="user-text" style={{ fontSize: "1.4rem" }}>
                 Detections:
               </div>
-              {cubeStates[index]?.data.detections.map((detection) => (
-                <div className="user-description">- {detection}</div>
+              {cubeStates[index]?.data.detections.map((detection, index) => (
+                <div key={detection + index} className="user-description">- {detection}</div>
               ))}
             </div>
           ))}
