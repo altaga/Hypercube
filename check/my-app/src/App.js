@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     interval = setInterval(() => {
       analyze();
-    }, 1000);
+    },250);
     interval2 = setInterval(() => {
       feed();
     },50)

@@ -1,5 +1,6 @@
 "use client";
 import { getCookie } from "@/api/cookies";
+import { getCubes, getCubeStates } from "@/api/cubesInfo";
 import { getOffer } from "@/api/offersInfo";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
@@ -13,7 +14,8 @@ export default function UserPage({ params }) {
   // Check User
   const [user, _] = useState(getCookie("user"));
   const [room, __] = useState(getCookie("room"));
-  const [cubes, ___] = useState(getCookie("cubes"));
+  const [cubes, setCubes] = useState([]);
+  const [cubeStates, setCubeStates] = useState([]);
   const [points, ____] = useState(getCookie("points"));
   const [offers, setOffers] = useState([]);
   const [stage, setStage] = useState(0);
@@ -23,63 +25,70 @@ export default function UserPage({ params }) {
     setOffers(offers);
   };
 
+  const getAllCubes = async () => {
+    const cubes = await getCubes();
+    const cubeStates = await getCubeStates();
+    setCubeStates(cubeStates);
+    setCubes(cubes);
+  };
+
   useEffect(() => {
-    if (
-      user === null ||
-      room === null ||
-      user !== decodeURIComponent(params.user)
-    ) {
-      window.location.href = "/";
-    } else {
-      getOffers();
-    }
+    getAllCubes();
   }, []);
 
   return (
     <div className="user-page">
       {stage === 0 && (
         <>
-          <div className="user-card">
-            <Image
-              src={"/assets/logo.png"}
-              alt="Hypercube Logo"
-              width={100}
-              height={100}
-            />
-            <div className="user-text">Welcome</div>
-            <div className="separator" style={{ backgroundColor: "#777777" }} />
-            <div className="user-description">
-              <EmailIcon style={{ marginRight: "5px" }}></EmailIcon> Email:{" "}
-              {user}
+          {cubes.map((cube, index) => (
+            <div className="user-card">
+              <div className="user-text">
+                Zone:
+                <br />
+                {cube.name}
+              </div>
+              <div
+                className="separator"
+                style={{
+                  backgroundColor: "#777777",
+                  marginTop: "10px",
+                  marginBottom: "10px",
+                }}
+              />
+              <div className="user-text" style={{ fontSize: "1.4rem" }}>
+                Detections:
+              </div>
+              {cubeStates[index]?.data.detections.map((detection) => (
+                <div className="user-description">- {detection}</div>
+              ))}
             </div>
-            <div className="user-description">
-              <WeekendIcon style={{ marginRight: "10px" }}></WeekendIcon>
-              Room: {room}
-            </div>
-            <div className="user-description">
-              <ScoreboardIcon style={{ marginRight: "10px" }}></ScoreboardIcon>
-              Points: {points}
-            </div>
-          </div>
+          ))}
+          <p />
         </>
       )}
       {stage === 1 && (
         <>
-          <div className="user-title">Cubes Discovered</div>
+          <div className="user-title">Cubes Available</div>
           <div className="cube-card">
-            {cubes.map((cube) => (
+            {cubes.map((cube, index) => (
               <div
                 className="cube-item"
                 key={cube.id}
                 onClick={() => (window.location.href = `/cube/${cube.id}`)}
               >
                 <img
-                  src={"/assets/logo.png"}
+                  src={
+                    (cubeStates[index]?.data.risky
+                      ? "/assets/cubeWeapon.png"
+                      : cubeStates[index]?.data.fallen
+                      ? "/assets/cubeFall.png"
+                      : "/assets/cubeOk.png") ?? "/assets/cubeOk.png"
+                  }
                   alt="Hypercube Logo"
                   width={"100%"}
                   height={"100%"}
                 />
-                <div className="cube-description">{cube.name}</div>
+                <div className="cube-description-admin">{cube.name}</div>
               </div>
             ))}
           </div>
@@ -87,14 +96,18 @@ export default function UserPage({ params }) {
       )}
       {stage === 2 && (
         <>
-          <div className="user-title">Offers Available</div>
+          <div className="user-title">Cubes Discovered</div>
           <div className="cube-card">
             {offers.map((offer) => (
               <div className="cube-item" key={offer.id}>
                 <LocalOfferIcon
-                  style={{ marginRight: "10px", color: offer.color, fontSize: "8rem" }}
+                  style={{
+                    marginRight: "10px",
+                    color: offer.color,
+                    fontSize: "8rem",
+                  }}
                 ></LocalOfferIcon>
-                <div className="cube-description">{offer.name}</div>
+                <div className="cube-description-admin">{offer.name}</div>
               </div>
             ))}
           </div>
@@ -110,35 +123,24 @@ export default function UserPage({ params }) {
         <Button
           onClick={() => setStage(0)}
           style={{
-            fontSize: "1.5rem",
+            fontSize: "1rem",
             margin: "10px 0px",
             backgroundColor: stage === 0 && "white",
             color: stage === 0 && "black",
           }}
         >
-          Profile
+          Detections
         </Button>
         <Button
           onClick={() => setStage(1)}
           style={{
-            fontSize: "1.5rem",
+            fontSize: "1rem",
             margin: "10px 0px",
             backgroundColor: stage === 1 && "white",
             color: stage === 1 && "black",
           }}
         >
           Cubes
-        </Button>
-        <Button
-          onClick={() => setStage(2)}
-          style={{
-            fontSize: "1.5rem",
-            margin: "10px 0px",
-            backgroundColor: stage === 2 && "white",
-            color: stage === 2 && "black",
-          }}
-        >
-          Offers
         </Button>
       </ButtonGroup>
     </div>
