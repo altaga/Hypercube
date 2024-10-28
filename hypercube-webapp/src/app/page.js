@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function LandingPage() {
-  const [inputValue, setInputValue] = useState("v.a.i@hotmail.com");
-  const [inputValue2, setInputValue2] = useState("201");
+  const [inputValue, setInputValue] = useState("");
+  const [inputValue2, setInputValue2] = useState("");
 
   useEffect(() => {
     const user = getCookie("user");
