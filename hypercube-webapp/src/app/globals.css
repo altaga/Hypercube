@@ -9,7 +9,7 @@ body {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background: linear-gradient(180deg, #7c59ee 0%, #2e1861 100%);
+  background: linear-gradient(180deg, #6495ed 0%, #2e1861 100%);
 }
 
 .container {
@@ -55,7 +55,7 @@ body {
     background-image: url("/assets/landing-full.png");
     background-size: cover;
     background-position: right;
-    background-color: #7c59ee; /* overlay color with 50% opacity */
+    background-color: #6495ed; /* overlay color with 50% opacity */
     background-blend-mode: multiply;
     position: absolute;
     display: flex;
@@ -339,7 +339,7 @@ body {
     background-image: url("/assets/landing-full.png");
     background-size: cover;
     background-position: right;
-    background-color: #7c59ee; /* overlay color with 50% opacity */
+    background-color: #6495ed; /* overlay color with 50% opacity */
     background-blend-mode: multiply;
     position: absolute;
     display: flex;

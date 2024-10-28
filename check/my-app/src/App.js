@@ -28,7 +28,7 @@ function App() {
       redirect: "follow",
     };
 
-    fetch("http://192.168.1.224:3000/analyze", requestOptions)
+    fetch("http://168.192.1.206:3000/analyze", requestOptions)
       .then((response) => response.json())
       .then((res) => {
         setImage(res.result.imagePoses);
@@ -42,7 +42,7 @@ function App() {
       method: "GET",
       redirect: "follow",
     };
-    fetch("http://192.168.1.224:3000/feed", requestOptions)
+    fetch("http://168.192.1.206:3000/feed", requestOptions)
       .then((response) => response.json())
       .then((res) => {
         setImage3(res.result);
